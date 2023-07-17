@@ -9,15 +9,19 @@ export async function createHotel() {
   const hotel = await prisma.hotel.create({
     data: hotelData,
   });
+  return hotel;
+}
+
+export async function createRoomHotel(hotelId: number) {
   const roomData = [
     {
       capacity: 2,
-      hotelId: hotel.id,
+      hotelId: hotelId,
       name: '2 hospedes',
     },
     {
       capacity: 4,
-      hotelId: hotel.id,
+      hotelId: hotelId,
       name: '4 hospedes',
     },
   ];
