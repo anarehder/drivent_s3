@@ -217,7 +217,7 @@ describe('GET /hotels/:hotelId', () => {
       const ticketType = await createHotelTicketType();
       await createTicket(enrollment.id, ticketType.id, TicketStatus.PAID);
       // tenho token e enrollment e ticket presencial com hotel pago, mas não existe nada na lista de hoteis
-      const response = await server.get('/hotels').set('Authorization', `Bearer ${token}`);
+      const response = await server.get('/hotels/1').set('Authorization', `Bearer ${token}`);
       expect(response.status).toBe(httpStatus.NOT_FOUND);
     });
     it('should respond with status 200 and the list of hotel rooms', async () => {
